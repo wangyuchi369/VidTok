@@ -164,7 +164,7 @@ def main():
         tic = time.time()
         for i, input in tqdm(enumerate(dataloader)):
             input = input.to(device)
-            _, xrec, _ = model(input)
+            _, xrec, *_ = model(input)
             input = rearrange(input, "b c t h w -> (b t) c h w")
             inputs.append(input)
             xrec = rearrange(xrec, "b c t h w -> (b t) c h w")

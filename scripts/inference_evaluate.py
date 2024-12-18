@@ -179,7 +179,7 @@ def main():
         tic = time.time()
         for i, input in tqdm(enumerate(dataloader)):
             input = input.to(device)
-            _, output, reg_log = model(input)
+            _, output, *_ = model(input)
 
             output = output.clamp(-1, 1)
             input, output = map(lambda x: (x + 1) / 2, (input, output))
