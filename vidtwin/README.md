@@ -148,9 +148,6 @@ python main.py -b CONFIG --logdir LOGDIR --wandb --wandb_entity ENTITY --wandb_p
 
 ## 📏 Inference
 
-### Checkpoint
-
-We provide a checkpoint primarily used in our paper, which you can download [here]. Please place it in the `checkpoints` folder.
 
 ### Easy Usage
 We provide the following example for a quick usage of our models. 
@@ -176,7 +173,7 @@ assert x_input.shape == x_recon.shape
 
 ### Reconstruct an Input Video
 ```bash
-python scripts/inference_reconstruct.py --config CONFIG --ckpt CKPT --input_video_path VIDEO_PATH --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 224 --input_width 224 --sample_fps 30 --output_video_dir OUTPUT_DIR
+python scripts/inference_reconstruct.py --config CONFIG --ckpt CKPT --input_video_path VIDEO_PATH --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 224 --input_width 224 --sample_fps 25 --output_video_dir OUTPUT_DIR
 ```
 - Specify `VIDEO_PATH` to the path of your test video. We provide an example video in `assets/example.mp4`. 
 - Set `NUM_FRAMES_PER_BATCH` to `16.
@@ -188,7 +185,7 @@ We also provide a manuscript `scripts/inference_evaluate.py` to evaluate the vid
 1. Put all of your test videos under `DATA_DIR`.
 2. Run the following command, and all `.mp4` videos under `DATA_DIR` will be tested:
 ```bash
-python scripts/inference_evaluate.py --config CONFIG --ckpt CKPT --data_dir DATA_DIR --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 224 --input_width 224 --sample_fps 30
+python scripts/inference_evaluate.py --config CONFIG --ckpt CKPT --data_dir DATA_DIR --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 224 --input_width 224 --sample_fps 25
 ```
 (Optional) If you only want to test certain videos under `DATA_DIR`, you need to prepare a `.csv` meta file 
 to indicate the video files to be tested (refer to [Data Preparation](#data-preparation)). And add `--meta_path META_PATH` to the above command to specify the path to the `.csv` meta file.
@@ -200,6 +197,11 @@ to indicate the video files to be tested (refer to [Data Preparation](#data-prep
 For VidTwin model, we conduct a cross-reenactment experiment in which we combine the *Structure Latent* from one video, $A$, with the *Dynamics Latent* from another video, $B$, to observe the generated output from the decoder, i.e., generating $\mathcal{D}(u^A_{\boldsymbol{S}}, u^B_{\boldsymbol{D}})$.
 
 To facilitate this experiment, we provide the script `vidtwin/scripts/inference_vidtwin_cross_reconstruct.py`. This script follows a similar usage method to `vidtwin/scripts/inference_reconstruct.py` with the addition of two new arguments: `--input_video_path_structure` and `--input_video_path_dynamics`, which allow you to specify the videos for structure and dynamics information, respectively.
+
+## 📆 TODO List
+- [ ] Provide pretrained checkpoint.
+- [ ] Paper released on arXiv.
+- [x] Provide training and testing code.
 
 
 ## ☕ BibTeX
