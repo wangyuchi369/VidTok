@@ -6,7 +6,7 @@
 </div>
 
 
-### 🎉🎉🎉 <font color=red size=4>*News!*</font> We have released the [VidTwin model](), check it out [here]().
+### 🎉🎉🎉 <font color=red size=4>*News!*</font> We have released the [VidTwin model](https://github.com/wangyuchi369/VidTok/tree/main/vidtwin), check it out [here](https://github.com/wangyuchi369/VidTok/tree/main/vidtwin).
 
 
 ---
