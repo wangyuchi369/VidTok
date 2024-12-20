@@ -27,8 +27,9 @@ We propose a novel and compact video autoencoder, VidTwin, that decouples video 
 
 Extensive experiments show that VidTwin achieves a high compression rate of 0.20% with high reconstruction quality (PSNR of 28.14 on the MCL-JCV dataset), and performs efficiently and effectively in downstream generative tasks. Moreover, our model demonstrates explainability and scalability, paving the way for future research in video latent representation and generation.
 <div align=center>
-<img src='../assets/vidtwin.png' width="600">
+<img src='../assets/vidtwin.png' width="800">
 </div>
+
 ## ⚙️ Setup
 
 1. Our code is based on **VidTok**, so you will need to install the [required packages for VidTok](https://github.com/microsoft/VidTok?tab=readme-ov-file#setup) first. To do so, navigate to the VidTok folder and create the environment using the `environment.yaml` file:
@@ -146,13 +147,13 @@ It is recommended to use [Weights & Biases](https://wandb.ai/site) as the data v
 python main.py -b CONFIG --logdir LOGDIR --wandb --wandb_entity ENTITY --wandb_project PROJECT
 ```
 
-## 📏 Inference
+## 🎯 Inference
 
-### Checkpoint
+### 💎 Checkpoint
 
 We provide a checkpoint primarily used in our paper, which you can download [here]. Please place it in the `checkpoints` folder.
 
-### Easy Usage
+### 🔨 Easy Usage
 We provide the following example for a quick usage of our models. 
 Just provide the path to the configuration file `cfg_path` and checkpoint file `ckpt_path`.
 ```python
@@ -174,7 +175,7 @@ _, x_recon, *_ = model(x_input)
 assert x_input.shape == x_recon.shape
 ```
 
-### Reconstruct an Input Video
+### 📷 Reconstruct an Input Video
 ```bash
 python scripts/inference_reconstruct.py --config CONFIG --ckpt CKPT --input_video_path VIDEO_PATH --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 224 --input_width 224 --sample_fps 30 --output_video_dir OUTPUT_DIR
 ```
@@ -182,7 +183,7 @@ python scripts/inference_reconstruct.py --config CONFIG --ckpt CKPT --input_vide
 - Set `NUM_FRAMES_PER_BATCH` to `16.
 - The reconstructed video is saved in `OUTPUT_DIR`.
 
-### Performance Evaluation
+### 📏 Performance Evaluation
 We also provide a manuscript `scripts/inference_evaluate.py` to evaluate the video reconstruction performance in PSNR, SSIM and LPIPS.
 
 1. Put all of your test videos under `DATA_DIR`.
@@ -195,7 +196,7 @@ to indicate the video files to be tested (refer to [Data Preparation](#data-prep
 
 
 
-### Cross-reenactment of VidTwin Model
+### ⚔️ Cross-reenactment of VidTwin Model
 
 For VidTwin model, we conduct a cross-reenactment experiment in which we combine the *Structure Latent* from one video, $A$, with the *Dynamics Latent* from another video, $B$, to observe the generated output from the decoder, i.e., generating $\mathcal{D}(u^A_{\boldsymbol{S}}, u^B_{\boldsymbol{D}})$.
 
