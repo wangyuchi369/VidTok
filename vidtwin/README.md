@@ -20,7 +20,7 @@ VidTwin: Video VAE with Decoupled Structure and Dynamics
 
 </div>
 
-![vidtwin](../assets/vidtwin_disen.png)
+![alt text](../assets/vidtwin_disen.png)
 
 We propose a novel and compact video autoencoder, VidTwin, that decouples video into two distinct latent spaces: **Structure latent vectors, which capture overall content and global movement, and Dynamics latent vectors, which represent fine-grained details and rapid movements**. 
 
@@ -30,7 +30,7 @@ Extensive experiments show that VidTwin achieves a high compression rate of 0.20
 
 ## Setup
 
-1. Our code is based on VidTok, thus you may need to install the [required packages for VidTok](https://github.com/microsoft/VidTok?tab=readme-ov-file#setup) first, namely navigate to VidTok folder and install the `environment.yaml` file.:
+1. Our code is based on **VidTok**, so you will need to install the [required packages for VidTok](https://github.com/microsoft/VidTok?tab=readme-ov-file#setup) first. To do so, navigate to the VidTok folder and create the environment using the `environment.yaml` file:
 
 ```bash
 cd VidTok
@@ -40,7 +40,7 @@ conda env create -f environment.yaml
 conda activate vidtok
 ```
 
-2. Install additional packages for VidTwin model.
+2. After setting up VidTok, install the additional packages required for the VidTwin model:
 ```bash
 pip install tranformers
 pip install timm
@@ -56,7 +56,7 @@ pip install flash-attn --no-build-isolation
 
 ### Data Preparation
 
-We follow the same way as VidTok to prepare the data. You may also find the Dataloader class in `vidtok/data/vidtok.py`. It is a general dataloader for video data, which you may adapt it to your own dataset.
+We follow the same approach as **VidTok** to prepare the data. You can also find the Dataloader class in: `vidtok/data/vidtok.py`. This Dataloader is a general-purpose class for handling video data. You may customize it to suit your own dataset and specific use cases.
 
 1. Put all training videos under `DATA_DIR`:
 ```
@@ -84,11 +84,11 @@ subset2/subsubset1/videoname211.mp4
 
 ### Launch Training
 
-1. Specifiy the configuration file. 
+1. Specify the Configuration File
 
-Our code follows the modularity design, which means you may easily customize the model structure and training settings by modifying the configuration file. We provide a configuration file `configs/vidtwin/vidtwin_structure_7_7_8_dynamics_7_8.yaml` for VidTwin model.
+Our code follows a **modular design**, allowing you to easily customize the model structure and training settings by modifying a configuration file. For the **VidTwin** model, we provide the following configuration file:`configs/vidtwin/vidtwin_structure_7_7_8_dynamics_7_8.yaml`.
 
-In the Model section, you may specify the model structure and important hyperparameters, like the hyperparameters of the latent size below.
+- In the **Model** section of the configuration file, you can specify the model's structure and key hyperparameters. For instance, you can adjust the following settings:
 
 ```yaml
 model:
@@ -100,14 +100,16 @@ model:
     d_dim: 8 # the dimension of the Dynamics Latent, d_D
 ```
 
-You may also specify the `ckpt_path` parameter to finetune from a checkpoint instead of training from scratch:
+- If you'd like to **fine-tune** the model from a pre-trained checkpoint instead of training from scratch, you can specify the `ckpt_path` parameter in the configuration file. 
+
 ```yaml
 model:
   params:
     ckpt_path: PATH_TO_CHECKPOINT  # train from existing checkpoint
 ```
 
-for the data section, you may specify the data path and other data-related hyperparameters:
+- In the **Data** section of the configuration file, you can specify paths and other important data-related hyperparameters. 
+
 ```yaml
 train:
     target: vidtok.data.vidtok.VidTokDataset
@@ -147,7 +149,6 @@ python main.py -b CONFIG --logdir LOGDIR --wandb --wandb_entity ENTITY --wandb_p
 
 ## Inference
 
-**yuchi comments** *almost same, apart from resolution, num-frames, etc*
 
 ### Easy Usage
 We provide the following example for a quick usage of our models. 
@@ -167,12 +168,12 @@ model.to(device).eval()
 num_frames = 16
 x_input = (torch.rand(1, 3, num_frames, 224, 224) * 2 - 1).to(device)  # [B, C, T, H, W], range -1~1
 # model forward
-_, x_recon, _ = model(x_input)
+_, x_recon, *_ = model(x_input)
 assert x_input.shape == x_recon.shape
 ```
 
 ### Reconstruct an Input Video
-```
+```bash
 python scripts/inference_reconstruct.py --config CONFIG --ckpt CKPT --input_video_path VIDEO_PATH --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 224 --input_width 224 --sample_fps 30 --output_video_dir OUTPUT_DIR
 ```
 - Specify `VIDEO_PATH` to the path of your test video. We provide an example video in `assets/example.mp4`. 
@@ -184,14 +185,11 @@ We also provide a manuscript `scripts/inference_evaluate.py` to evaluate the vid
 
 1. Put all of your test videos under `DATA_DIR`.
 2. Run the following command, and all `.mp4` videos under `DATA_DIR` will be tested:
-```
-python scripts/inference_evaluate.py --config CONFIG --ckpt CKPT --data_dir DATA_DIR --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 256 --input_width 256 --sample_fps 30
+```bash
+python scripts/inference_evaluate.py --config CONFIG --ckpt CKPT --data_dir DATA_DIR --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 224 --input_width 224 --sample_fps 30
 ```
 (Optional) If you only want to test certain videos under `DATA_DIR`, you need to prepare a `.csv` meta file 
 to indicate the video files to be tested (refer to [Data Preparation](#data-preparation)). And add `--meta_path META_PATH` to the above command to specify the path to the `.csv` meta file.
-
-**yuchi comments** *add Cross-reenactment scripts*
-
 
 
 
@@ -199,11 +197,11 @@ to indicate the video files to be tested (refer to [Data Preparation](#data-prep
 
 For VidTwin model, we conduct a cross-reenactment experiment in which we combine the *Structure Latent* from one video, $A$, with the *Dynamics Latent* from another video, $B$, to observe the generated output from the decoder, i.e., generating $\mathcal{D}(u^A_{\boldsymbol{S}}, u^B_{\boldsymbol{D}})$.
 
-To facilitate this experiment, we provide the script `scripts/inference_vidtwin_cross_reconstruct.py`. This script follows a similar usage method to `scripts/inference_reconstruct.py,` with the addition of two new arguments: `--input_video_path_structure` and `--input_video_path_dynamics`, which allow you to specify the videos for structure and dynamics information, respectively.
+To facilitate this experiment, we provide the script `vidtwin/scripts/inference_vidtwin_cross_reconstruct.py`. This script follows a similar usage method to `vidtwin/scripts/inference_reconstruct.py` with the addition of two new arguments: `--input_video_path_structure` and `--input_video_path_dynamics`, which allow you to specify the videos for structure and dynamics information, respectively.
 
 
 ## BibTeX
-
+If you find our project helpful to your research, please consider starring this repository and citing our paper.  
 ```bibtex
 @article{wang2024vidtwin,
   title={VidTwin: Video VAE with Decoupled Structure and Dynamics},

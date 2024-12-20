@@ -5,8 +5,12 @@
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-red?logo=arxiv&logoColor=white)](https://arxiv.org/pdf/2412.13061) &ensp; [![GitHub](https://img.shields.io/badge/GitHub-Code-blue?logo=github&logoColor=white)](https://github.com/microsoft/VidTok) &ensp; [![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Models-yellow)](https://huggingface.co/microsoft/VidTok)
 </div>
 
----
 
+
+<font color=red size=4>*News!*</font> We have released the **VidTwin** model, check it out [here]().
+
+
+---
 ![radar](assets/radar.png)
 
  We introduce VidTok, a family of versatile video tokenizers that delivers state-of-the-art performance in both continuous and discrete tokenizations. VidTok incorporates several key advancements over existing approaches:
@@ -15,6 +19,8 @@
  * 💥 **Improved training strategies**. To improve training efficiency, we employ a two-stage training strategy: initially pre-training the full model on low-resolution videos, followed by fine-tuning only the decoder on high-resolution videos. Furthermore, we observe that utilizing training data with reduced frame rates effectively improves the model's ability to represent motion dynamics.
 
 We train VidTok on a large-scale video dataset and evaluation reveal that VidTok outperforms previous models in both discrete and continuous tokenization, achieving superior results across all evaluated metrics, including PSNR, SSIM, LPIPS, and FVD.
+
+
 
 ## Setup
 1. Clone this repository and navigate to VidTok folder:
@@ -308,6 +314,13 @@ Thank you to everyone who contributed their wisdom and efforts to this project.
   author={Tang, Anni and He, Tianyu and Guo, Junliang and Cheng, Xinle and Song, Li and Bian, Jiang},
   year={2024},
   journal={arXiv preprint arXiv:2412.13061},
+}
+
+@article{wang2024vidtwin,
+  title={VidTwin: Video VAE with Decoupled Structure and Dynamics},
+  author={},
+  year={2024},
+  journal={arXiv preprint arXiv:2412.xxxxx},
 }
 ```
 
