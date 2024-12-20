@@ -18,16 +18,17 @@ VidTwin: Video VAE with Decoupled Structure and Dynamics
 
 [![arXiv](https://img.shields.io/badge/arXiv-Paper-red?logo=arxiv&logoColor=white)](https://arxiv.org/pdf/2412.xxxx) &ensp; [![GitHub](https://img.shields.io/badge/GitHub-Code-blue?logo=github&logoColor=white)](https://github.com/microsoft/VidTok) &ensp; [![Static Badge](https://img.shields.io/badge/Demo-Demo_Page-yellow)](https://wangyuchi369.github.io/VidTwin/)
 
-</div>
 
-![alt text](../assets/vidtwin_disen.png)
+
+<img src='../assets/vidtwin_demo.png' width="600">
+</div>
 
 We propose a novel and compact video autoencoder, VidTwin, that decouples video into two distinct latent spaces: **Structure latent vectors, which capture overall content and global movement, and Dynamics latent vectors, which represent fine-grained details and rapid movements**. 
 
 Extensive experiments show that VidTwin achieves a high compression rate of 0.20% with high reconstruction quality (PSNR of 28.14 on the MCL-JCV dataset), and performs efficiently and effectively in downstream generative tasks. Moreover, our model demonstrates explainability and scalability, paving the way for future research in video latent representation and generation.
-
-![vidtwin](../assets/vidtwin.png)
-
+<div align=center>
+<img src='../assets/vidtwin.png' width="600">
+</div>
 ## ⚙️ Setup
 
 1. Our code is based on **VidTok**, so you will need to install the [required packages for VidTok](https://github.com/microsoft/VidTok?tab=readme-ov-file#setup) first. To do so, navigate to the VidTok folder and create the environment using the `environment.yaml` file:
@@ -47,9 +48,7 @@ pip install timm
 pip install flash-attn --no-build-isolation
 ```
 
-## Checkpoints
 
-**yuchi comments**: *put the ckpts in the same folder in Huggingface?*
 
 
 ## 🏁 Training
@@ -149,6 +148,9 @@ python main.py -b CONFIG --logdir LOGDIR --wandb --wandb_entity ENTITY --wandb_p
 
 ## 📏 Inference
 
+### Checkpoint
+
+We provide a checkpoint primarily used in our paper, which you can download [here]. Please place it in the `checkpoints` folder.
 
 ### Easy Usage
 We provide the following example for a quick usage of our models. 
