@@ -28,7 +28,7 @@ Extensive experiments show that VidTwin achieves a high compression rate of 0.20
 
 ![vidtwin](../assets/vidtwin.png)
 
-## Setup
+## ⚙️ Setup
 
 1. Our code is based on **VidTok**, so you will need to install the [required packages for VidTok](https://github.com/microsoft/VidTok?tab=readme-ov-file#setup) first. To do so, navigate to the VidTok folder and create the environment using the `environment.yaml` file:
 
@@ -52,9 +52,9 @@ pip install flash-attn --no-build-isolation
 **yuchi comments**: *put the ckpts in the same folder in Huggingface?*
 
 
-## Training
+## 🏁 Training
 
-### Data Preparation
+### 🚢 Data Preparation
 
 We follow the same approach as **VidTok** to prepare the data. You can also find the Dataloader class in: `vidtok/data/vidtok.py`. This Dataloader is a general-purpose class for handling video data. You may customize it to suit your own dataset and specific use cases.
 
@@ -82,7 +82,7 @@ subset2/subsubset1/videoname211.mp4
 
 > Validation data is also prepared following the above steps.
 
-### Launch Training
+### 🚀 Launch Training
 
 1. Specify the Configuration File
 
@@ -147,7 +147,7 @@ It is recommended to use [Weights & Biases](https://wandb.ai/site) as the data v
 python main.py -b CONFIG --logdir LOGDIR --wandb --wandb_entity ENTITY --wandb_project PROJECT
 ```
 
-## Inference
+## 📏 Inference
 
 
 ### Easy Usage
@@ -200,7 +200,7 @@ For VidTwin model, we conduct a cross-reenactment experiment in which we combine
 To facilitate this experiment, we provide the script `vidtwin/scripts/inference_vidtwin_cross_reconstruct.py`. This script follows a similar usage method to `vidtwin/scripts/inference_reconstruct.py` with the addition of two new arguments: `--input_video_path_structure` and `--input_video_path_dynamics`, which allow you to specify the videos for structure and dynamics information, respectively.
 
 
-## BibTeX
+## ☕ BibTeX
 If you find our project helpful to your research, please consider starring this repository and citing our paper.  
 ```bibtex
 @article{wang2024vidtwin,
