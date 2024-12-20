@@ -3,14 +3,14 @@
 <h1 align="center">
 VidTwin: Video VAE with Decoupled Structure and Dynamics
 </h1>
-<h4 align="center">
+<h3 align="center">
   <a href="https://wangyuchi369.github.io/">Yuchi Wang</a> &nbsp; 
   <a href="https://lemmonation.github.io/">Junliang Guo</a> &nbsp;
   <a href="https://ieeexplore.ieee.org/author/37088736490">Xinyi Xie</a> &nbsp;
   <a href="https://www.microsoft.com/en-us/research/people/tianyuhe/">Tianyu He</a> &nbsp;
   <a href="https://xusun26.github.io/">Xu Sun</a> &nbsp;
   <a href="https://sites.google.com/view/jiangbian">Jiang Bian</a>
-</h4>
+</h3>
 
 <br>
 
@@ -20,13 +20,16 @@ VidTwin: Video VAE with Decoupled Structure and Dynamics
 
 
 
-<img src='../assets/vidtwin_demo.png' width="600">
+<img src='../assets/vidtwin_demo.png' width="650">
+<br>
+<br>
 </div>
 
 We propose a novel and compact video autoencoder, VidTwin, that decouples video into two distinct latent spaces: **Structure latent vectors, which capture overall content and global movement, and Dynamics latent vectors, which represent fine-grained details and rapid movements**. 
 
 Extensive experiments show that VidTwin achieves a high compression rate of 0.20% with high reconstruction quality (PSNR of 28.14 on the MCL-JCV dataset), and performs efficiently and effectively in downstream generative tasks. Moreover, our model demonstrates explainability and scalability, paving the way for future research in video latent representation and generation.
 <div align=center>
+  <br>
 <img src='../assets/vidtwin.png' width="800">
 </div>
 
@@ -177,7 +180,7 @@ assert x_input.shape == x_recon.shape
 
 ### 📷 Reconstruct an Input Video
 ```bash
-python scripts/inference_reconstruct.py --config CONFIG --ckpt CKPT --input_video_path VIDEO_PATH --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 224 --input_width 224 --sample_fps 30 --output_video_dir OUTPUT_DIR
+python vidtwin/scripts/inference_reconstruct.py --config CONFIG --ckpt CKPT --input_video_path VIDEO_PATH --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 224 --input_width 224 --sample_fps 30 --output_video_dir OUTPUT_DIR
 ```
 - Specify `VIDEO_PATH` to the path of your test video. We provide an example video in `assets/example.mp4`. 
 - Set `NUM_FRAMES_PER_BATCH` to `16.
@@ -189,7 +192,7 @@ We also provide a manuscript `scripts/inference_evaluate.py` to evaluate the vid
 1. Put all of your test videos under `DATA_DIR`.
 2. Run the following command, and all `.mp4` videos under `DATA_DIR` will be tested:
 ```bash
-python scripts/inference_evaluate.py --config CONFIG --ckpt CKPT --data_dir DATA_DIR --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 224 --input_width 224 --sample_fps 30
+python vidtwin/scripts/inference_evaluate.py --config CONFIG --ckpt CKPT --data_dir DATA_DIR --num_frames_per_batch NUM_FRAMES_PER_BATCH --input_height 224 --input_width 224 --sample_fps 30
 ```
 (Optional) If you only want to test certain videos under `DATA_DIR`, you need to prepare a `.csv` meta file 
 to indicate the video files to be tested (refer to [Data Preparation](#data-preparation)). And add `--meta_path META_PATH` to the above command to specify the path to the `.csv` meta file.
