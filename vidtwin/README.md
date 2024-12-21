@@ -1,7 +1,7 @@
 
 
 <h1 align="center">
-VidTwin: Video VAE with Decoupled Structure and Dynamics
+<img src="../assets/gemini.png" alt="VidTwin" style="height: 2.3rem;"> VidTwin: Video VAE with Decoupled Structure and Dynamics
 </h1>
 <h3 align="center">
   <a href="https://wangyuchi369.github.io/">Yuchi Wang</a> &nbsp; 
