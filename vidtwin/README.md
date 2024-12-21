@@ -209,7 +209,7 @@ To facilitate this experiment, we provide the script `vidtwin/scripts/inference_
 
 
 ## ☕ BibTeX
-If you find our project helpful to your research, please consider starring this repository and citing our paper.  
+If you find our project helpful to your research, please consider starring this repository🌟 and citing our paper.  
 ```bibtex
 @article{wang2024vidtwin,
   title={VidTwin: Video VAE with Decoupled Structure and Dynamics},
