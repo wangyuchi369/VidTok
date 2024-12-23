@@ -6,7 +6,7 @@
 </div>
 
 
-### 🎉🎉🎉 <font color=red size=4>*News!*</font> We have released the [VidTwin model](https://github.com/wangyuchi369/VidTok/tree/main/vidtwin), check it out [here](https://github.com/wangyuchi369/VidTok/tree/main/vidtwin).
+### 🎉🎉🎉 <font color=red size=4>*News!*</font> We have released the [VidTwin model](https://wangyuchi369.github.io/VidTwin/). Check it out from our [Project Page](https://wangyuchi369.github.io/VidTwin/):fire. We also provide [code here](https://github.com/microsoft/VidTok/tree/main/vidtwin).
 
 
 ---

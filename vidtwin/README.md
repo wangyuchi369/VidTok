@@ -16,9 +16,9 @@
 
 <div align=center>
 
-[![arXiv](https://img.shields.io/badge/arXiv-Paper-red?logo=arxiv&logoColor=white)](https://arxiv.org/pdf/2412.xxxx) &ensp; [![GitHub](https://img.shields.io/badge/GitHub-Code-blue?logo=github&logoColor=white)](https://github.com/microsoft/VidTok) &ensp; [![Static Badge](https://img.shields.io/badge/Demo-Demo_Page-yellow)](https://wangyuchi369.github.io/VidTwin/)
+[![arXiv](https://img.shields.io/badge/arXiv-Paper-red?logo=arxiv&logoColor=white)](https://arxiv.org/pdf/2412.xxxx) &ensp; [![GitHub](https://img.shields.io/badge/GitHub-Code-blue?logo=github&logoColor=white)](https://github.com/microsoft/VidTok) &ensp; [![Static Badge](https://img.shields.io/badge/Demo-Project_Page-yellow)](https://wangyuchi369.github.io/VidTwin/)
 
-
+<h3> We highly encourage you to check our <a href="https://wangyuchi369.github.io/VidTwin/">Project Page</a> for enhanced visual experience.</h3>
 
 <img src='../assets/vidtwin_demo.png' width="650">
 <br>
